@@ -441,6 +441,20 @@
             background-color: rgba(255, 255, 255, 0.1);
             transform: translateY(-2px);
         }
+
+        #typing-heading {
+            white-space: nowrap;
+            overflow: hidden;
+            margin: 0 auto;
+            min-height: 50px;
+            /* Set a minimum height based on your font size */
+            display: inline-block;
+            /* Important for maintaining height */
+            line-height: 1.2;
+            /* Adjust as needed for your font */
+            vertical-align: bottom;
+            /* Keeps the text baseline stable */
+        }
     </style>
 </head>
 
@@ -464,7 +478,7 @@
     <section id='profile' class="profile container">
         <img src="assets/images/profile.jpeg" alt="John Smith" class="profile-img">
         <h1 style="font-size: 36px;">Mochamad Khaairi</h1>
-        <h2 style="font-size: 30px;">Data Scientist</h2>
+        <h2 id="typing-heading" style="font-size: 30px; padding-bottom: 10px;"></h2>
         <div class="location">
             <i class="fas fa-map-marker-alt"></i>
             <span>Bandung, Indonesia</span>
@@ -584,56 +598,6 @@
         </div>
     </section>
 
-    <!-- Projects Section
-    <section id="work" class="section container">
-        <div class="section-header">
-            <h1 style="font-size: 28px;" class="section-title">Portfolio</h1>
-            <a href="#" class="view-all">View all →</a>
-        </div>
-        <div class="projects-grid">
-            <div class="project-card">
-                <img src="https://via.placeholder.com/300x180" alt="Brandrly Project" class="project-img">
-                <div class="project-info">
-                    <div class="project-title">
-                        <span>Brandrly</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </div>
-                    <div class="project-category">Agency Website</div>
-                </div>
-            </div>
-            <div class="project-card">
-                <img src="https://via.placeholder.com/300x180" alt="Shinz Project" class="project-img">
-                <div class="project-info">
-                    <div class="project-title">
-                        <span>Shinz</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </div>
-                    <div class="project-category">Personal Portfolio</div>
-                </div>
-            </div>
-            <div class="project-card">
-                <img src="https://via.placeholder.com/300x180" alt="Vivid Project" class="project-img">
-                <div class="project-info">
-                    <div class="project-title">
-                        <span>Vivid</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </div>
-                    <div class="project-category">App Showcase</div>
-                </div>
-            </div>
-            <div class="project-card">
-                <img src="https://via.placeholder.com/300x180" alt="Capture Project" class="project-img">
-                <div class="project-info">
-                    <div class="project-title">
-                        <span>Capture</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </div>
-                    <div class="project-category">Video Agency</div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
     <!-- Education Section -->
     <section id="education" class="section container">
         <h1 style="font-size: 28px;" class="section-title">Education</h1>
@@ -720,6 +684,53 @@
             <div class="skill-pill">FastAPI</div>
         </div>
     </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const titles = [
+                "Data Scientist",
+                "Machine Learning Engineer",
+                "Backend Engineer",
+            ];
+
+            const typingHeading = document.getElementById('typing-heading');
+            let titleIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let typingSpeed = 100;
+
+            function typeWriter() {
+                const currentTitle = titles[titleIndex];
+
+                if (isDeleting) {
+                    // Deleting text
+                    typingHeading.textContent = currentTitle.substring(0, charIndex - 1);
+                    charIndex--;
+                    typingSpeed = 50; // Faster when deleting
+                } else {
+                    // Typing text
+                    typingHeading.textContent = currentTitle.substring(0, charIndex + 1);
+                    charIndex++;
+                    typingSpeed = 100; // Normal speed when typing
+                }
+
+                // If we've finished typing the current title
+                if (!isDeleting && charIndex === currentTitle.length) {
+                    isDeleting = true;
+                    typingSpeed = 2000; // Pause at the end of typing
+                }
+                // If we've finished deleting the current title
+                else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    titleIndex = (titleIndex + 1) % titles.length; // Move to next title
+                    typingSpeed = 10; // Pause before starting new title
+                }
+
+                setTimeout(typeWriter, typingSpeed);
+            }
+
+            typeWriter();
+        });
+    </script>
 </body>
 
 </html>
