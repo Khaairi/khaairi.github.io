@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mochamad Khaairi</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <style>
         /* Global Styles */
         * {
@@ -110,7 +111,6 @@
             gap: 5px;
             font-size: 14px;
             color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 10px;
         }
 
         .availability {
@@ -418,28 +418,85 @@
             color: rgba(255, 255, 255, 0.6);
         }
 
-        /* Skills Section */
-        .skills-container {
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .skill-group-card {
+            background-color: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .skill-group-card:hover {
+            border-color: #4CAF50;
+            transform: translateY(-3px);
+        }
+
+        /* Bagian Header (Judul Kategori) */
+        .group-header {
+            background-color: #161b22;
+            padding: 12px 15px;
+            border-bottom: 1px solid #30363d;
+            font-size: 14px;
+            font-weight: 600;
+            color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Bagian Isi (Icon-icon) */
+        .group-body {
+            padding: 20px 15px;
             display: flex;
             flex-wrap: wrap;
             gap: 15px;
-            margin-top: 20px;
+            /* Jarak antar icon */
+            align-items: center;
         }
 
-        .skill-pill {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 30px;
-            padding: 10px 20px;
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.9);
-            display: inline-block;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+        /* Styling Icon */
+        .tech-icon {
+            font-size: 32px;
+            /* Ukuran icon */
+            color: #8b949e;
+            /* Warna default abu-abu soft */
+            transition: color 0.3s, transform 0.2s;
+            cursor: pointer;
         }
 
-        .skill-pill:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
+        /* Warna asli saat di-hover */
+        .tech-icon:hover {
+            color: #f5f5f5;
+            transform: scale(1.1);
+        }
+
+        /* Tooltip sederhana (opsional) saat hover icon */
+        .tech-icon[title]:hover::after {
+            content: attr(title);
+            position: absolute;
+            font-size: 10px;
+            background: #4CAF50;
+            color: white;
+            padding: 2px 5px;
+            border-radius: 4px;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+        }
+
+        /* Icon container untuk positioning tooltip */
+        .icon-wrapper {
+            position: relative;
         }
 
         #typing-heading {
@@ -465,10 +522,9 @@
             <nav>
                 <ul>
                     <li><a href="#profile">Profile</a></li>
+                    <li><a href="#skills">Skill and Stack</a></li>
                     <li><a href="#experience">Projects</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#certificates">Certifications</a></li>
+                    <li><a href="#certificates">Certifications and Achievements</a></li>
                 </ul>
             </nav>
         </div>
@@ -476,13 +532,10 @@
 
     <!-- Profile Section -->
     <section id='profile' class="profile container">
-        <img src="assets/images/profile.jpeg" alt="John Smith" class="profile-img">
+        <img src="assets/images/profile2.jpeg" alt="John Smith" class="profile-img">
         <h1 style="font-size: 36px;">Mochamad Khaairi</h1>
-        <h2 id="typing-heading" style="font-size: 30px; padding-bottom: 10px;"></h2>
-        <div class="location">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>Bandung, Indonesia</span>
-        </div>
+        <p style="padding-top: 15px;">Passionate on</p>
+        <h2 id="typing-heading" style="font-size: 45px; padding-bottom: 30px;"></h2>
         <div class="contact-links">
             <a href="mailto:mochamad.khaairi30@gmail.com">
                 <i class="fas fa-envelope"></i>
@@ -496,6 +549,120 @@
                 <i class="fab fa-linkedin"></i>
                 <span>LinkedIn</span>
             </a>
+            <div class="location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Bandung, Indonesia</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section container">
+        <h1 style="font-size: 28px;" class="section-title">Skills & Stack</h1>
+
+        <div class="skills-grid">
+
+            <div class="skill-group-card">
+                <div class="group-header">
+                    Languages
+                    <i class="fas fa-code" style="color: #4CAF50;"></i>
+                </div>
+                <div class="group-body">
+                    <div class="icon-wrapper">
+                        <i class="devicon-python-plain colored tech-icon" title="Python"></i>
+                    </div>
+                    <div class="icon-wrapper">
+                        <i class="devicon-azuresqldatabase-plain colored tech-icon" title="SQL"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-group-card">
+                <div class="group-header">
+                    AI Frameworks & Libraries
+                    <i class="fas fa-brain" style="color: #4CAF50;"></i>
+                </div>
+                <div class="group-body">
+                    <div class="icon-wrapper">
+                        <i class="devicon-tensorflow-original colored tech-icon" title="Tensorflow"></i>
+                    </div>
+                    <div class="icon-wrapper">
+                        <i class="devicon-pytorch-original colored tech-icon" title="Pytorch"></i>
+                    </div>
+                    <div class="icon-wrapper">
+                        <i class="devicon-scikitlearn-plain colored tech-icon" title="Scikit-learn"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-group-card">
+                <div class="group-header">
+                    Data Processing
+                    <i class="fa-solid fa-sheet-plastic" style="color: #4CAF50;"></i>
+                </div>
+                <div class="group-body">
+                    <div class="icon-wrapper">
+                        <i class="devicon-numpy-plain colored tech-icon" title="Numpy"></i>
+                    </div>
+                    <div class="icon-wrapper">
+                        <i class="devicon-pandas-plain tech-icon" title="Pandas"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-group-card">
+                <div class="group-header">
+                    Data Visualization
+                    <i class="fas fa-chart-bar" style="color: #4CAF50;"></i>
+                </div>
+                <div class="group-body">
+                    <div class="icon-wrapper">
+                        <i class="devicon-matplotlib-plain tech-icon" title="Matplotlib"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-group-card">
+                <div class="group-header">
+                    Web Application
+                    <i class="fa-solid fa-desktop" style="color: #4CAF50;"></i>
+                </div>
+                <div class="group-body">
+                    <div class="icon-wrapper">
+                        <i class="devicon-streamlit-plain colored tech-icon" title="Streamlit"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-group-card">
+                <div class="group-header">
+                    Databases
+                    <i class="fas fa-server" style="color: #4CAF50;"></i>
+                </div>
+                <div class="group-body">
+                    <div class="icon-wrapper">
+                        <i class="devicon-mysql-original tech-icon" title="MySQL"></i>
+                    </div>
+                    <div class="icon-wrapper">
+                        <i class="devicon-mongodb-plain colored tech-icon" title="MongoDB"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-group-card">
+                <div class="group-header">
+                    Backend & Tools
+                    <i class="fa-solid fa-screwdriver-wrench" style="color: #4CAF50;"></i>
+                </div>
+                <div class="group-body">
+                    <div class="icon-wrapper">
+                        <i class="devicon-fastapi-plain colored tech-icon" title="FastAPI"></i>
+                    </div>
+                    <div class="icon-wrapper">
+                        <i class="devicon-git-plain colored tech-icon" title="Git"></i>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -598,54 +765,21 @@
         </div>
     </section>
 
-    <!-- Education Section -->
-    <section id="education" class="section container">
-        <h1 style="font-size: 28px;" class="section-title">Education</h1>
-
-        <div class="education-item">
-            <h3 class="degree-name">Bachelor of Science in Computer Science</h3>
-            <div style="color: #4CAF50;" class="university-name">Universitas Pendidikan Indonesia</div>
-            <div class="education-period">2021 - Present</div>
-            <p class="education-description">
-                Relevant Coursework: Artificial Intelligence, Data Mining and Warehouse, Data Structure, Machine
-                Learning, Deep Learning, Natural Language Processing, Computer Vision.
-            </p>
-        </div>
-
-        <div class="education-item">
-            <h3 class="degree-name">Machine Learning Cohort</h3>
-            <div style="color: #4CAF50;" class="university-name">Bangkit Academy led by Google, Tokopedia, Gojek, &
-                Traveloka (2024)</div>
-            <div class="education-period">February 2024 - July 2024</div>
-            <p class="education-description">
-                Relevant Coursework : Mathematics for Machine Learning and Data Science, DeepLearning.AI TensorFlow
-                Developer, Machine Learning Specialization, TensorFlow: Data and Deployment, TensorFlow: Advanced
-                Techniques.
-            </p>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="section container">
-        <h1 style="font-size: 28px;" class="section-title">Skills</h1>
-
-        <div class="skills-container">
-            <div class="skill-pill">Python</div>
-            <div class="skill-pill">Machine Learning</div>
-            <div class="skill-pill">Deep Learning</div>
-            <div class="skill-pill">Data Analysis</div>
-            <div class="skill-pill">Data Visualization</div>
-            <div class="skill-pill">SQL</div>
-            <div class="skill-pill">Computer Vision</div>
-            <div class="skill-pill">Natural Language Processing</div>
-        </div>
-    </section>
-
     <section id="certificates" class="section container">
         <div class="section-header">
             <h1 style="font-size: 28px;" class="section-title">Certifications and Achievements</h1>
         </div>
         <div class="projects-grid">
+            <a href="https://drive.google.com/file/d/1UYh9XtD46buiICWnU8s_khWFsdHmD7Ao/view?usp=sharing">
+                <div class="project-card">
+                    <img src="assets/images/bangkit.jpg" alt="DCML" class="project-img">
+                    <div class="project-info">
+                        <div class="project-title">
+                            <span>Bangkit 2024 Batch 1 Machine Learning Cohort</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
             <a href="https://dev.id/certificate/verify/Z3WX1XMWQ2">
                 <div class="project-card">
                     <img src="assets/images/DCML.jpg" alt="DCML" class="project-img">
@@ -679,27 +813,13 @@
         </div>
     </section>
 
-    <!-- Stack Section -->
-    <section id="stack" class="section container">
-        <h1 style="font-size: 28px;" class="section-title">Stack</h1>
-
-        <div class="skills-container">
-            <div class="skill-pill">Python</div>
-            <div class="skill-pill">Pandas</div>
-            <div class="skill-pill">TensorFlow</div>
-            <div class="skill-pill">Pytorch</div>
-            <div class="skill-pill">Matplotlib</div>
-            <div class="skill-pill">MySQL</div>
-            <div class="skill-pill">MongoDB</div>
-            <div class="skill-pill">FastAPI</div>
-        </div>
-    </section>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const titles = [
-                "Data Scientist",
-                "Machine Learning Engineer",
-                "Backend Engineer",
+                "Data Science",
+                "Machine Learning",
+                "Computer Vision",
+                "Natural Language Processing",
             ];
 
             const typingHeading = document.getElementById('typing-heading');
@@ -744,4 +864,3 @@
 </body>
 
 </html>
-
